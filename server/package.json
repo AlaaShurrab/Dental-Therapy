@@ -52,7 +52,7 @@
     "eslint-plugin-jest": "^24.3.2",
     "eslint-plugin-prettier": "^3.4.0",
     "lint-staged": "^11.0.0",
-    "mocha": "^7.1.1",
+    "mocha": "^9.0.1",
     "nodemon": "^2.0.7",
     "prettier": "2.3.1",
     "supertest": "^6.1.3"
