@@ -1,0 +1,89 @@
+{
+  "name": "dental_therapy",
+  "main": "index.ts",
+  "license": "MIT",
+  "engines": {
+    "node": ">=12",
+    "npm": ">=6"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "proxy": "http://localhost:5000/",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "run-s lint:*",
+    "lint:code": "eslint --fix ./src --ext .js,.jsx,.ts,.tsx",
+    "lint:type": "tsc",
+    "lint:format": "prettier -w . -u --loglevel silent",
+    "lint:style": "stylelint --fix \"**/*.{css,ts,tsx}\"",
+    "storybook": "start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": "eslint --fix",
+    "*.{css,scss,sass}": "stylelint --fix",
+    "**/*": "prettier -w -u"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^4.6.2",
+    "@loadable/component": "^5.14.1",
+    "antd": "^4.14.1",
+    "axios": "^0.21.1",
+    "normalize.css": "^8.0.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-helmet": "^6.1.0",
+    "react-router-config": "^5.1.1",
+    "react-router-dom": "^5.2.0",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.2.4",
+    "yup": "^0.32.9"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^6.1.14",
+    "@storybook/addon-essentials": "^6.1.14",
+    "@storybook/addon-links": "^6.1.14",
+    "@storybook/node-logger": "^6.1.14",
+    "@storybook/preset-create-react-app": "^3.1.5",
+    "@storybook/react": "^6.1.14",
+    "lint-staged": "^11.0.0",
+    "@types/loadable__component": "^5.13.3",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^17.0.7",
+    "@types/react-dom": "^17.0.3",
+    "@types/react-helmet": "^6.1.1",
+    "@types/react-router-config": "^5.0.2",
+    "@types/react-router-dom": "^5.1.7",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-flowtype": "^5.4.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.5",
+    "eslint-plugin-jest-dom": "^3.8.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.0",
+    "stylelint": "^13.13.0",
+    "stylelint-config-standard": "^22.0.0",
+    "ts-node": "^9.1.1"
+  }
+}
