@@ -26,7 +26,7 @@
     "lint:code": "eslint --fix ./src --ext .js,.jsx,.ts,.tsx",
     "lint:type": "tsc",
     "lint:format": "prettier -w . -u --loglevel silent",
-    "lint:style": "stylelint --fix \"**/*.{css,ts,tsx}\"",
+    "lint:style": "stylelint --fix \"src/**/*.{css,ts,tsx}\"",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },

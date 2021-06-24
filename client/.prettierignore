@@ -1,6 +1,9 @@
 # Production
 public/*
 !public/manifest.json
+node_modules/*
+build/*
+storybook-static/*
 
 # Misc
 *.log

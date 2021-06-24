@@ -27,5 +27,5 @@ function onListening() {
     debug(`Local: http://localhost:${addr.port}/api`);
 }
 
-server.listen(5000);
+server.listen(port);
 server.on('listening', onListening);
