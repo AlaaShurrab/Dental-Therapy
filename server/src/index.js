@@ -3,6 +3,9 @@ import http from 'http';
 
 import app from './app';
 import config from './config';
+import * as constants from './constants';
+
+const { DEVELOPMENT } = constants.envTypes;
 
 const debug = Debug('server');
 
@@ -20,6 +23,8 @@ function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string' ? `pipe ${addr}` : `port ${addr.port}`;
   debug(`Listening on ${bind}`);
+  if (config.common.env === DEVELOPMENT)
+    debug(`Local: http://localhost:${addr.port}/api`);
 }
 
 server.listen(5000);
