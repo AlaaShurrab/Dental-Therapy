@@ -34,7 +34,7 @@
     "morgan": "^1.9.1",
     "pg": "^8.0.3",
     "serve-favicon": "^2.5.0",
-    "yup": "^0.28.3"
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
