@@ -1,23 +1,21 @@
+#### Issues this PR relates to
+=======
 
-## What
+---
 
-What changes are being made? (e.g. feature, bug, docs, etc.)
+#### Any info the reviewer needs to know to test 
+e.g. Add env vars, run npm install
 
-## Why
+---
 
-Why are these changes necessary?
+#### Any info the team needs to consider before merged into development
+e.g. Will a database need to be rebuilt (and is this ok if existing data), add env vars
 
-## How
+---
 
-How were these changes implemented?
+#### Quick Pull Request Checklist
 
-## Checklist
-
-Have you done all of these things?
-
-<!-- add "N/A" to the end of each line that's irrelevant to your changes -->
-<!-- to check an item, place an "x" in the box like so: "- [x] Documentation" -->
-
+Please make sure you ensure the following has been done before marking your PR as awaiting-review. For full checklist and process review
 - [ ] Documentation added
 - [ ] Tests
 - [ ] TypeScript definitions updated
