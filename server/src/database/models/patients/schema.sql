@@ -5,6 +5,6 @@ CREATE TABLE "patients" (
   "full_name" VARCHAR(50) NOT NULL,
   "first_name" VARCHAR(20) NOT NULL,
   "last_name" VARCHAR(20) NOT NULL,
-  "birthday" TIMESTAMP::timestamp::date,
+  "birthday" TIMESTAMP,
   "phone" VARCHAR(50) NOT NULL
 );

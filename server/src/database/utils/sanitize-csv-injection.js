@@ -7,7 +7,7 @@ const possibleCsvInject = RegExp(/^(=|"=|\+|"\+|-|"-|@|"@)/);
 
 const sanitizeCSVInjection = (params) => {
   if (isObject(params)) {
-    const n = {};
+    const filteredObj = {};
 
     Object.entries(params).forEach(([key, _value]) => {
       if (isArray(_value) || isObject(_value)) {
@@ -18,10 +18,10 @@ const sanitizeCSVInjection = (params) => {
       if (possibleCsvInject.test(_value)) {
         value = `\t${_value}`;
       }
-      n[key] = value;
+      filteredObj[key] = value;
     });
 
-    return n;
+    return filteredObj;
   }
 
   if (isArray(params)) {

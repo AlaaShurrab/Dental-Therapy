@@ -5,26 +5,26 @@ const isArray = (a) => Array.isArray(a);
 const isObject = (o) =>
   o === Object(o) && !isArray(o) && typeof o !== 'function';
 
-const toCamel = (s) =>
-  s.replace(/([-_][a-z])/gi, ($1) =>
+const toCamel = (str) =>
+  str.replace(/([-_][a-z])/gi, ($1) =>
     $1.toUpperCase().replace('-', '').replace('_', '')
   );
 
-const keysToCamel = (o) => {
-  if (isObject(o) && !isDate(o)) {
-    const n = {};
+const keysToCamel = (data) => {
+  if (isObject(data) && !isDate(data)) {
+    const filteredObj = {};
 
-    Object.keys(o).forEach((k) => {
-      n[toCamel(k)] = keysToCamel(o[k]);
+    Object.keys(data).forEach((key) => {
+      filteredObj[toCamel(key)] = keysToCamel(data[key]);
     });
 
-    return n;
+    return filteredObj;
   }
-  if (isArray(o)) {
-    return o.map((i) => keysToCamel(i));
+  if (isArray(data)) {
+    return data.map((i) => keysToCamel(i));
   }
 
-  return o;
+  return data;
 };
 
 export default keysToCamel;
