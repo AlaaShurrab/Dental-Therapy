@@ -12,7 +12,7 @@
     "build:server": "cross-env DEBUG=server babel . --out-dir dist --ignore \"node_modules\"",
     "build": "npm run clean && npm run build:server",
     "clean": "rm -rf dist && mkdir dist",
-    "build:db": "cross-env NODE_ENV=development node src/database/config",
+    "build:db": "cross-env DEBUG=server babel-node ./src/database/build.script.js",
     "lint": "eslint src/ --fix"
   },
   "lint-staged": {
