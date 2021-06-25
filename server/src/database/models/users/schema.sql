@@ -7,5 +7,5 @@ CREATE TABLE "users" (
   "last_name" VARCHAR(20) NOT NULL,
   "email" VARCHAR(100) UNIQUE NOT NULL,
   "password" TEXT NOT NULL,
-  "role_id" user_roles NOT NULL
+  "role" user_roles NOT NULL
 );
