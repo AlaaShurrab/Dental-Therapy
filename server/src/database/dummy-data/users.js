@@ -33,8 +33,8 @@ const createUser = async ({
   ]);
   return res.rows[0];
 };
-// 123456Aa password
-const password = '$2a$08$23ik.euo.8EM.tqkX/43ke539bnaWX/2vK8nsbrdlYl0UhGMwCR92';
+// Aa123456 password
+const password = '$2y$10$/j1CCg2rUanfV3wDqiqt/ulLJc1LCdK8gUrd88dD3sXbAroC.hDVy';
 
 const createUsers = async () => {
   const client1 = await createUser({
