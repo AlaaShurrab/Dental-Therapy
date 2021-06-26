@@ -6,12 +6,12 @@ import Boom from '@hapi/boom';
 import favicon from 'serve-favicon';
 import logger from 'morgan';
 
+import router from './api';
 import config from './config';
 import * as constants from './constants';
 
 const { PRODUCTION, TEST } = constants.envTypes;
 
-// eslint-disable-next-line no-unused-vars
 const debug = Debug('server');
 
 const app = express();
@@ -21,6 +21,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use('/api', router);
 
 if (config.common.env === PRODUCTION) {
   app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
@@ -33,10 +35,6 @@ if (config.common.env === PRODUCTION) {
   });
 }
 
-app.use('/api', (req, res) => {
-  res.send('hi from api');
-});
-
 // eslint-disable-next-line no-unused-vars
 app.use((err, _, res, next) => {
   let error = err;
@@ -46,7 +44,7 @@ app.use((err, _, res, next) => {
   const { statusCode, payload } = error.output;
 
   if (config.common.env !== TEST) {
-    console.log(err);
+    debug(err);
   }
 
   return res.status(statusCode).json({
