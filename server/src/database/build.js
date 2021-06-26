@@ -6,7 +6,7 @@ import buildData from './dummy-data';
 // development data build
 const build = async () => {
   await init.createTypes();
-  //   await init.buildMigrations();
+  await init.createAutoUpdateTrigger();
 
   await models.users.createTable();
   await models.patients.createTable();

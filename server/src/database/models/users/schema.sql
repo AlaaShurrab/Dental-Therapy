@@ -7,5 +7,12 @@ CREATE TABLE "users" (
   "last_name" VARCHAR(20) NOT NULL,
   "email" VARCHAR(100) UNIQUE NOT NULL,
   "password" TEXT NOT NULL,
-  "role" user_roles NOT NULL
+  "role" user_roles NOT NULL,
+  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+  "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
+
+CREATE TRIGGER set_timestamp
+BEFORE UPDATE ON "users"
+FOR EACH ROW
+EXECUTE PROCEDURE trigger_set_timestamp();
