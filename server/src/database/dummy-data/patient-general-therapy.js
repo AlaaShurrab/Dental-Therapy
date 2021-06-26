@@ -8,7 +8,7 @@ const createTherapy = async ({
 }) => {
   const sql = `INSERT INTO patient_general_therapy(
     patient_id,
-    global_therapy_id,
+    general_therapy_id,
     therapy_number,
     notes
   ) VALUES (
