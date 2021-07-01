@@ -1,4 +1,6 @@
 import express from 'express';
+import http from 'http';
+import socketIo from 'socket.io';
 import path from 'path';
 import cookieParser from 'cookie-parser';
 import Debug from 'debug';
@@ -7,6 +9,7 @@ import favicon from 'serve-favicon';
 import logger from 'morgan';
 
 import router from './api';
+import ioHandler from './io';
 import config from './config';
 import * as constants from './constants';
 
@@ -15,6 +18,10 @@ const { PRODUCTION, TEST } = constants.envTypes;
 const debug = Debug('server');
 
 const app = express();
+const server = http.createServer(app);
+const io = socketIo(server);
+
+app.io = io;
 
 app.use(logger('dev'));
 
@@ -23,6 +30,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use('/api', router);
+
+io.on('connection', ioHandler(io));
 
 if (config.common.env === PRODUCTION) {
   app.use(express.static(path.join(__dirname, '..', 'client', 'build')));
@@ -53,4 +62,4 @@ app.use((err, _, res, next) => {
   });
 });
 
-export default app;
+export { app, server, io };
