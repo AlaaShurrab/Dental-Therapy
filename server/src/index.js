@@ -1,7 +1,6 @@
 import Debug from 'debug';
-import http from 'http';
 
-import app from './app';
+import { server, app } from './app';
 import config from './config';
 import * as constants from './constants';
 
@@ -16,8 +15,6 @@ process.on('uncaughtException', (err) => {
 
 const { port } = config.server;
 app.set('port', port);
-
-const server = http.createServer(app);
 
 function onListening() {
   const addr = server.address();
