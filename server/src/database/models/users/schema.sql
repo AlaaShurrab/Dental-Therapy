@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS "users" CASCADE;
 
 CREATE TABLE "users" (
   "id" SERIAL PRIMARY KEY,
-  "user_name" VARCHAR(55) NOT NULL,
+  "user_name" VARCHAR(55) UNIQUE NOT NULL,
   "first_name" VARCHAR(20) NOT NULL,
   "last_name" VARCHAR(20) NOT NULL,
   "email" VARCHAR(100) UNIQUE NOT NULL,
