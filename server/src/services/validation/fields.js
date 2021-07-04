@@ -1,4 +1,4 @@
-import { string } from 'yup';
+import { string, date } from 'yup';
 import * as errMsgs from './err-msgs';
 
 export const email = string()
@@ -16,3 +16,5 @@ export const password = string()
     errMsgs.SHORT_PASSWORD
   )
   .required(errMsgs.FIELD_REQUIRED('password'));
+
+export const targetedDate = date().typeError(errMsgs.INVALID_DATE);
