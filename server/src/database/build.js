@@ -16,6 +16,7 @@ const build = async () => {
   await models.patientGeneralTherapy.createTable();
   await models.patientTeethTherapy.createTable();
   await models.financialRecords.createTable();
+  await models.generalSettings.createTable();
 
   // build dummy data
   const createdData = await buildData();
