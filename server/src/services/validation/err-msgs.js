@@ -6,3 +6,6 @@ export const SHORT_PASSWORD =
 export const INVALID_EMAIL = 'Invalid email';
 export const INVALID_USERNAME = 'Invalid userName';
 export const INVALID_ROLE = 'Invalid role';
+export const INVALID_OPEN_TIME = 'Invalid time';
+export const INVALID_HOURS_COUNT = 'Invalid number of hours';
+export const INVALID_APPOINTMENT_DURATION = 'Invalid Appointment Duration';
