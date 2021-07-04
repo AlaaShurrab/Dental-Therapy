@@ -19,13 +19,13 @@ const availableAppointments = async (req, res, next) => {
     const { openTime, workingHours, appointmentDurationInMinutes, daysOff } =
       await settings.getGeneralSettings();
 
-    let arr = [];
+    let appointmentsArray = [];
 
     if (
       isDateCurrentlyAvailable(date) &&
       !daysOff.includes(date.format('dddd'))
     ) {
-      arr = await Appointment.availableByDate({
+      appointmentsArray = await Appointment.availableByDate({
         targetedDate,
         openTime,
         workingHours,
@@ -33,7 +33,7 @@ const availableAppointments = async (req, res, next) => {
       });
     }
 
-    res.json(arr);
+    res.json(appointmentsArray);
   } catch (error) {
     next(error);
   }

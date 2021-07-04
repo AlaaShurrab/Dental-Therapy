@@ -6,7 +6,7 @@ const availableAppointmentsByDate = async ({
   workingHours,
   appointmentDurationInMinutes,
 }) => {
-  const arr = [];
+  const appointmentsArray = [];
 
   let data = await findUnavailableTimes(targetedDate);
   data = data.map(({ appointmentTime }) => appointmentTime);
@@ -21,11 +21,11 @@ const availableAppointmentsByDate = async ({
       }:00`;
 
       if (!data.includes(time)) {
-        arr.push(time);
+        appointmentsArray.push(time);
       }
     }
   }
-  return arr;
+  return appointmentsArray;
 };
 
 export default availableAppointmentsByDate;
