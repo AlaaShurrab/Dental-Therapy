@@ -1,3 +1,3 @@
-import availableAppointments from './validate-available-appointments';
+import validateAvailableAppointments from './validate-available-appointments';
 
-export { availableAppointments };
+export { validateAvailableAppointments };
