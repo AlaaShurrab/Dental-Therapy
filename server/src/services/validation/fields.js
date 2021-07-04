@@ -17,4 +17,4 @@ export const password = string()
   )
   .required(errMsgs.FIELD_REQUIRED('password'));
 
-export const targetedDate = date().required(errMsgs.FIELD_REQUIRED('date'));
+export const targetedDate = date().typeError(errMsgs.INVALID_DATE);
