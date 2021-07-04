@@ -5,6 +5,7 @@ CREATE TABLE "general_settings" (
   "open_time" TIME NOT NULL,
   "working_hours" INTEGER NOT NULL,
   "appointment_duration_in_minutes" INTEGER NOT NULL,
+  "days_off" TEXT[], --['saterday', 'sunday']
   "update_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
