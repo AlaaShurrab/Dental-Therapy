@@ -49,12 +49,11 @@ app.use((err, _, res, next) => {
   let error = err;
   if (!Boom.isBoom(err)) {
     error = Boom.badImplementation(err.message);
+    if (config.common.env !== TEST) {
+      debug(error);
+    }
   }
   const { statusCode, payload } = error.output;
-
-  if (config.common.env !== TEST) {
-    debug(err);
-  }
 
   return res.status(statusCode).json({
     data: { ...error.data },

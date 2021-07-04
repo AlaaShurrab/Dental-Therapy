@@ -1,4 +1,4 @@
-import { string, array } from 'yup';
+import { string, array, date } from 'yup';
 import * as errMsgs from './err-msgs';
 import * as constants from '../../constants';
 
@@ -34,3 +34,4 @@ export const appointmentDurationInMinutes = string().matches(
 );
 
 export const daysOff = array().of(string().oneOf(constants.ARRAY_OF_DAY_NAMES));
+export const targetedDate = date().typeError(errMsgs.INVALID_DATE);
