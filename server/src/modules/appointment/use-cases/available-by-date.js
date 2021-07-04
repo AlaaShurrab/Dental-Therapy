@@ -2,21 +2,22 @@ import { findUnavailableTimes } from '../model';
 
 const availableAppointmentsByDate = async ({
   targetedDate,
-  start,
-  duration,
-  stepByMoment,
+  openTime,
+  workingHours,
+  appointmentDurationInMinutes,
 }) => {
   const arr = [];
+
   let data = await findUnavailableTimes(targetedDate);
   data = data.map(({ appointmentTime }) => appointmentTime);
 
-  const startHour = parseFloat(start.split(':')[0]);
-  const endHour = startHour + duration;
+  const startHour = parseFloat(openTime.split(':')[0]);
+  const endHour = startHour + workingHours;
 
   for (let i = startHour; i < endHour; i += 1) {
-    for (let j = 0; j < 60 / stepByMoment; j += 1) {
-      const time = `${i < 10 && '0'}${i}:${
-        j === 0 ? '00' : stepByMoment * j
+    for (let j = 0; j < 60 / appointmentDurationInMinutes; j += 1) {
+      const time = `${i < 10 ? '0' : ''}${i}:${
+        j === 0 ? '00' : appointmentDurationInMinutes * j
       }:00`;
 
       if (!data.includes(time)) {
