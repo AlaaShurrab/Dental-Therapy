@@ -1,6 +1,3 @@
-import Boom from '@hapi/boom';
-import * as errMsgs from '../../../services/validation/err-msgs';
-
 import {
   fields,
   createSchema,
@@ -13,16 +10,9 @@ const availableAppointmentsSchema = createSchema({
   targetedDate,
 });
 
-const validate = (data) => {
-  if (!data.targetedDate)
-    throw Boom.badData(errMsgs.FIELD_REQUIRED('targetedDate'));
-  try {
-    return _validate(availableAppointmentsSchema, {
-      targetedDate: data.targetedDate,
-    });
-  } catch (error) {
-    throw Boom.badData(errMsgs.INVALID_DATE);
-  }
-};
+const validate = (data) =>
+  _validate(availableAppointmentsSchema, {
+    targetedDate: data.targetedDate,
+  });
 
 export default validate;
