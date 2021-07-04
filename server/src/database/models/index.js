@@ -6,6 +6,7 @@ import teethTherapy from './teeth-therapy';
 import patientGeneralTherapy from './patient-general-therapy';
 import patientTeethTherapy from './patient-teeth-therapy';
 import financialRecords from './financial-records';
+import generalSettings from './general-settings';
 
 export {
   users,
@@ -16,4 +17,5 @@ export {
   patientGeneralTherapy,
   patientTeethTherapy,
   financialRecords,
+  generalSettings,
 };

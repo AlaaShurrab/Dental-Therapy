@@ -7,6 +7,7 @@ import createPatientTeethTherapy from './patient-teeth-therapy';
 import createPatientGeneralTherapy from './patient-general-therapy';
 import createFinancialRecords from './financial-records';
 import createAppointments from './appointments';
+import createGeneralSettings from './general-settings';
 
 if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
@@ -22,6 +23,7 @@ const buildData = async () => {
   createdData.patientGeneralTherapy = await createPatientGeneralTherapy();
   createdData.financialRecords = await createFinancialRecords();
   createdData.appointments = await createAppointments();
+  createdData.generalSettings = await createGeneralSettings();
 
   return createdData;
 };
