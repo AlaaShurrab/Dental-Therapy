@@ -1,12 +1,13 @@
 import { Router } from 'express';
 import Boom from '@hapi/boom';
 import { errorMsgs } from '../services/error-handler';
-import { user, appointment } from '../modules';
+import { user, appointment, generalSettings } from '../modules';
 
 const router = Router();
 
 router.use('/users', user.controllers);
 router.use('/appointments', appointment.controllers);
+router.use('/settings', generalSettings.controllers);
 
 // catch 404 error and pass it to error handler
 router.use((req, res, next) => {
