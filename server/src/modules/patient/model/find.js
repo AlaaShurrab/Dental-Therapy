@@ -1,6 +1,6 @@
 import { query } from '../../../database';
 
-const findPatientID = async ({ firstName, lastName, phone }, client) => {
+const findPatientId = async ({ firstName, lastName, phone }, client) => {
   const values = [firstName, lastName, phone];
   const sql = `
     SELECT
@@ -17,4 +17,4 @@ const findPatientID = async ({ firstName, lastName, phone }, client) => {
   return res.rows[0];
 };
 
-export { findPatientID };
+export { findPatientId };
