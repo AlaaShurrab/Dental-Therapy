@@ -1,18 +1,7 @@
-import {
-  fields,
-  createSchema,
-  validate as _validate,
-} from '../../../services/validation';
+import dateValidation from '../../../helpers/date-validation';
 
-const { targetedDate } = fields;
-
-const availableAppointmentsSchema = createSchema({
-  targetedDate,
-});
-
-const validate = (data) =>
-  _validate(availableAppointmentsSchema, {
-    targetedDate: data.targetedDate,
-  });
+const validate = (data) => {
+  dateValidation(data.targetedDate, 'targetedDate').required();
+};
 
 export default validate;
