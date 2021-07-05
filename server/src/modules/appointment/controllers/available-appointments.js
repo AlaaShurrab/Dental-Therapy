@@ -1,20 +1,18 @@
-import moment from 'moment';
-import Boom from '@hapi/boom';
 import * as Appointment from '../use-cases';
 import { useCases as settings } from '../../general-settings';
-import { isDateCurrentlyAvailable } from '../../../helpers';
-import * as errMsgs from '../../../services/validation/err-msgs';
+import {
+  isDateCurrentlyAvailable,
+  getDayByDate,
+  dateFormatter,
+} from '../../../helpers';
 import { validateAvailableAppointments } from '../utils';
 
 const availableAppointments = async (req, res, next) => {
   const { targetedDate } = req.query;
   try {
-    if (!targetedDate)
-      throw Boom.badData(errMsgs.FIELD_REQUIRED('targetedDate'));
-
     await validateAvailableAppointments({ targetedDate });
 
-    const date = moment(targetedDate, 'DD-MM-YYYY');
+    const targetedDateFormatted = dateFormatter(targetedDate);
 
     const { openTime, workingHours, appointmentDurationInMinutes, daysOff } =
       await settings.getGeneralSettings();
@@ -22,11 +20,11 @@ const availableAppointments = async (req, res, next) => {
     let appointmentsArray = [];
 
     if (
-      isDateCurrentlyAvailable(date) &&
-      !daysOff.includes(date.format('dddd'))
+      isDateCurrentlyAvailable(targetedDateFormatted) &&
+      !daysOff.includes(getDayByDate(targetedDateFormatted))
     ) {
       appointmentsArray = await Appointment.availableByDate({
-        targetedDate,
+        targetedDate: targetedDateFormatted,
         openTime,
         workingHours,
         appointmentDurationInMinutes,
