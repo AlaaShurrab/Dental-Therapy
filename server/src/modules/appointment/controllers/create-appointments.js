@@ -14,6 +14,7 @@ const createAppointments = async (req, res, next) => {
     phone,
     appointmentDate,
     appointmentTime,
+    notes,
   } = req.body;
 
   const client = await getClient();
@@ -49,6 +50,7 @@ const createAppointments = async (req, res, next) => {
         patientId,
         appointmentDate: appointmentDateFormatted,
         appointmentTime: appointmentTimeFormatted,
+        notes,
       },
       client
     );

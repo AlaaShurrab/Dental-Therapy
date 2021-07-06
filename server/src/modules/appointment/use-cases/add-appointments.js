@@ -1,11 +1,11 @@
 import { createAppointment } from '../model';
 
 const addAppointments = async (
-  { patientId, appointmentDate, appointmentTime },
+  { patientId, appointmentDate, appointmentTime, notes },
   client
 ) => {
   await createAppointment(
-    { patientId, appointmentDate, appointmentTime },
+    { patientId, appointmentDate, appointmentTime, notes },
     client
   );
 };
