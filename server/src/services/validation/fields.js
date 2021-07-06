@@ -56,4 +56,9 @@ export const appointmentDurationInMinutes = string().matches(
 );
 
 export const daysOff = array().of(string().oneOf(constants.ARRAY_OF_DAY_NAMES));
+
 export const targetedDate = date().typeError(errMsgs.INVALID_DATE);
+
+export const optionalText = string()
+  .typeError(errMsgs.DEFAULT_REQUIRED)
+  .nullable();
