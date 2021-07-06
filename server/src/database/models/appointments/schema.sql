@@ -5,5 +5,6 @@ CREATE TABLE "appointments" (
   "patient_id" INTEGER REFERENCES patients(id) NOT NULL,
   "appointment_date" TEXT NOT NULL,
   "appointment_time" TIME NOT NULL,
-  "notes" TEXT
+  "notes" TEXT,
+  "created_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );

@@ -6,7 +6,8 @@ CREATE TABLE "general_settings" (
   "working_hours" INTEGER NOT NULL,
   "appointment_duration_in_minutes" INTEGER NOT NULL,
   "days_off" TEXT[], --['saterday', 'sunday']
-  "update_at" TIMESTAMP NOT NULL DEFAULT NOW()
+  "created_at" TIMESTAMP NOT NULL DEFAULT NOW(),
+  "updated_at" TIMESTAMP NOT NULL DEFAULT NOW()
 );
 
 CREATE TRIGGER set_timestamp

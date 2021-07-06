@@ -10,3 +10,5 @@ export const INVALID_DATE = 'Invalid date';
 export const INVALID_PHONE = 'Invalid phone number';
 export const INVALID_OPEN_TIME = 'Invalid time';
 export const TIME_NOT_AVAILABLE = 'This time is not available';
+export const INVALID_HOURS_COUNT = 'Invalid number of hours';
+export const INVALID_APPOINTMENT_DURATION = 'Invalid Appointment Duration';
