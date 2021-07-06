@@ -5,14 +5,15 @@ import {
   validate as _validate,
 } from '../../../services/validation';
 
-const { time } = fields;
+const { time, optionalText } = fields;
 
 const addAppointmentsSchema = createSchema({
   appointmentTime: time,
+  notes: optionalText,
 });
 
-const validate = ({ appointmentTime, appointmentDate }) => {
-  _validate(addAppointmentsSchema, { appointmentTime });
+const validate = ({ appointmentTime, appointmentDate, notes }) => {
+  _validate(addAppointmentsSchema, { appointmentTime, notes });
   dateValidation(appointmentDate, 'appointmentDate').required();
 };
 
