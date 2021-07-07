@@ -39,5 +39,3 @@ As a dentist, I can log into my account, and I can see the dashboard with three 
 - The calendar is presenting all the appointments of the patients and a search bar to go through all of them, Also by clicing on a day you I can see the appointments of that day .
 - The patient's option is presenting the info of the registered patients in the clinic database and a search bar to go through all of them, Also when i click on a patent's name I can view all his records and history.
 - If I click on a patient's name in any table, it shows all the history for him with the profile data and a form to enter the new data (operation) and the payment.
-
-the end

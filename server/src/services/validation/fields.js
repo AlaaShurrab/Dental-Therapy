@@ -1,4 +1,4 @@
-import { string, array, date } from 'yup';
+import { string, number, array, date } from 'yup';
 import * as errMsgs from './err-msgs';
 import * as constants from '../../constants';
 
@@ -10,6 +10,28 @@ export const userName = string()
   .min(1, errMsgs.INVALID_USERNAME)
   .max(20, errMsgs.INVALID_USERNAME)
   .required(errMsgs.FIELD_REQUIRED('userName'));
+
+export const firstName = string()
+  .min(1, errMsgs.FIELD_REQUIRED('firstName'))
+  .max(20)
+  .required(errMsgs.FIELD_REQUIRED('firstName'));
+
+export const lastName = string()
+  .min(1, errMsgs.FIELD_REQUIRED('lastName'))
+  .max(20)
+  .required(errMsgs.FIELD_REQUIRED('lastName'));
+
+export const id = number()
+  .min(1)
+  .required(errMsgs.FIELD_REQUIRED('id'))
+  .typeError(errMsgs.FIELD_REQUIRED('id'));
+
+export const phoneNumber = string()
+  .matches(
+    /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+    errMsgs.INVALID_PHONE
+  )
+  .required(errMsgs.FIELD_REQUIRED('phone number'));
 
 export const password = string()
   .matches(
@@ -34,4 +56,9 @@ export const appointmentDurationInMinutes = string().matches(
 );
 
 export const daysOff = array().of(string().oneOf(constants.ARRAY_OF_DAY_NAMES));
+
 export const targetedDate = date().typeError(errMsgs.INVALID_DATE);
+
+export const optionalText = string()
+  .typeError(errMsgs.DEFAULT_REQUIRED)
+  .nullable();
