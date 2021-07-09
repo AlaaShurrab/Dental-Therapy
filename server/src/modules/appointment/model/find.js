@@ -13,4 +13,16 @@ const findUnavailableTimes = async (date, client) => {
   return res.rows;
 };
 
-export { findUnavailableTimes };
+const findAppointmentsById = async ({ appointmentId }, client) => {
+  const values = [appointmentId];
+  const sql = `
+    SELECT
+      *
+    FROM appointments 
+      WHERE id = $1
+  `;
+  const res = await query(sql, values, client);
+  return res.rows[0];
+};
+
+export { findUnavailableTimes, findAppointmentsById };
