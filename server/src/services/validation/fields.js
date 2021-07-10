@@ -21,10 +21,20 @@ export const lastName = string()
   .max(20)
   .required(errMsgs.FIELD_REQUIRED('lastName'));
 
+export const fullName = string()
+  .min(1, errMsgs.FIELD_REQUIRED('fullName'))
+  .max(41);
+
 export const id = number()
   .min(1)
   .required(errMsgs.FIELD_REQUIRED('id'))
   .typeError(errMsgs.FIELD_REQUIRED('id'));
+
+export const offset = number()
+  .min(1)
+  .typeError(errMsgs.FIELD_REQUIRED('offset'));
+
+export const limit = number().min(1).typeError(errMsgs.FIELD_REQUIRED('limit'));
 
 export const phoneNumber = string()
   .matches(
@@ -32,6 +42,11 @@ export const phoneNumber = string()
     errMsgs.INVALID_PHONE
   )
   .required(errMsgs.FIELD_REQUIRED('phone number'));
+
+export const phoneNumberNotReq = string().matches(
+  /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/,
+  errMsgs.INVALID_PHONE
+);
 
 export const password = string()
   .matches(
