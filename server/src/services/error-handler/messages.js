@@ -10,6 +10,7 @@ const errors = {
   UNAUTHORIZED: 'You do not have permission to view this content',
   UNAUTHORIZED_EDIT: 'You do not have permission to do that',
   NOT_FOUND: "We cannot find what you're looking for",
+  ID_NOT_EXISTS: 'The id is not exist',
 };
 
 export default errors;
