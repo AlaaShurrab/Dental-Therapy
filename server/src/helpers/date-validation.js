@@ -1,7 +1,7 @@
 import Boom from '@hapi/boom';
 import isValidDate from './is-valid-date';
 
-import * as errMsgs from '../services/validation/err-msgs';
+import { errMsgs } from '../services/validation';
 
 const dateValidation = (date, fieldName) => {
   if (date && !isValidDate(date)) {
