@@ -3,15 +3,15 @@ import {
   fields,
   createSchema,
   validate as _validate,
+  errMsgs,
 } from '../../../services/validation';
 
-const { firstName, lastName, dateField, phoneNumber } = fields;
+const { firstName, lastName, phoneNumber } = fields;
 
 const validateCreatePatient = createSchema({
-  firstName,
-  lastName,
-  birthday: dateField,
-  phone: phoneNumber,
+  firstName: firstName.required(errMsgs.FIELD_REQUIRED('first name')),
+  lastName: lastName.required(errMsgs.FIELD_REQUIRED('last name')),
+  phone: phoneNumber.required(errMsgs.FIELD_REQUIRED('phone number')),
 });
 
 const validate = (data) => {

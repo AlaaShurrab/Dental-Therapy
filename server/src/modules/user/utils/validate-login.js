@@ -1,16 +1,16 @@
 import Boom from '@hapi/boom';
-import * as errMsgs from '../../../services/validation/err-msgs';
 import {
   fields,
   createSchema,
   validate as _validate,
+  errMsgs,
 } from '../../../services/validation';
 
 const { email, password, userName } = fields;
 
 const loginByUserName = createSchema({
-  userName,
-  password,
+  userName: userName.required(errMsgs.FIELD_REQUIRED('userName')),
+  password: password.required(errMsgs.FIELD_REQUIRED('email')),
 });
 
 const loginByEmail = createSchema({
