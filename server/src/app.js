@@ -12,6 +12,7 @@ import router from './api';
 import ioHandler from './io';
 import config from './config';
 import * as constants from './constants';
+import { requireHTTPS } from './api/middleware';
 
 const { PRODUCTION, TEST } = constants.envTypes;
 
@@ -24,6 +25,10 @@ const io = socketIo(server);
 app.io = io;
 
 app.use(logger('dev'));
+
+if (config.common.env === PRODUCTION) {
+  app.use(requireHTTPS);
+}
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
