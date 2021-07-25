@@ -36,4 +36,22 @@ const findUserByUserName = async (userName, client) => {
   return res.rows[0];
 };
 
-export { findUserByEmail, findUserByUserName };
+const findUserById = async (id, client) => {
+  const values = [id];
+  const sql = `
+  SELECT
+    id,
+    user_name,
+    first_name,
+    last_name,
+    email,
+    role::VARCHAR
+  FROM users
+    WHERE id = $1
+  `;
+
+  const res = await query(sql, values, client);
+  return res.rows[0];
+};
+
+export { findUserByEmail, findUserByUserName, findUserById };
