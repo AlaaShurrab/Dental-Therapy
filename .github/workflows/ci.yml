@@ -13,7 +13,11 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      DAY_OF_WEEK: Mon
+      DATABASE_URL_TEST: postgres://dentorouser:123456@localhost:5432/dentorotest
+      PORT: 4000
+      SECRET: secret
     strategy:
       matrix:
         node-version: [14.x]
@@ -36,6 +40,8 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-yarn-
         
+      - name: "env s"
+        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
       - name: Install dependencies
         run: yarn init:both
       - name: Run lint
