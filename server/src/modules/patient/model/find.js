@@ -17,4 +17,47 @@ const findPatientId = async ({ firstName, lastName, phone }, client) => {
   return res.rows[0];
 };
 
-export { findPatientId };
+const findPatientFromToWithName = async (
+  { offset, limit, fullName },
+  client
+) => {
+  const values = [offset, limit, fullName];
+  const sql = `
+  SELECT
+  id,
+  CONCAT  (first_name, ' ', last_name) AS full_name,
+  EXTRACT(YEAR FROM AGE(birthday)) AS age,
+  phone
+FROM 
+  patients
+WHERE
+  CONCAT (first_name, ' ', last_name) ~* COALESCE($3,'' )
+OFFSET 
+  $1
+LIMIT
+  $2
+  `;
+
+  const res = await query(sql, values, client);
+  return res.rows;
+};
+
+const findPatientWithPhone = async ({ phone }, client) => {
+  const values = [phone];
+  const sql = `
+  SELECT
+  id,
+  CONCAT  (first_name, ' ', last_name) AS full_name,
+  EXTRACT(YEAR FROM AGE(birthday)) AS age,
+  phone
+FROM 
+  patients
+WHERE
+  phone LIKE $1
+  `;
+
+  const res = await query(sql, values, client);
+  return res.rows;
+};
+
+export { findPatientId, findPatientFromToWithName, findPatientWithPhone };
